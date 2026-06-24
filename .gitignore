@@ -1,0 +1,29 @@
+# IDE
+.idea/
+*.iml
+imgui.ini
+
+# Claude
+.claude/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+
+# Data & outputs
+*.h5
+*.hdf5
+*.npz
+*.tfrecord
+exports_*/
+cache_sdf/
+logs/
+wandb/
+checkpoints*/
+*.mp4
+
+# OS
+.DS_Store

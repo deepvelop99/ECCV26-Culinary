@@ -1,0 +1,12 @@
+# Blender 4.5.2 LTS MTL File: 'Orange_internal.blend'
+# www.blender.org
+
+newmtl Peach_color.001
+Ns 30.000000         
+Ka 1.000000 0.900000 0.850000
+Kd 0.980000 0.650000 0.600000
+Ks 0.100000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2

@@ -1,0 +1,19 @@
+newmtl M_tomato
+Ns 50
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.2 0.2 0.2
+Ni 1.5
+d 1
+illum 2
+map_Kd ../tomato_skin.png
+
+newmtl M_tomato_cut
+Ns 50
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.3 0.3 0.3
+Ni 1.5
+d 1
+illum 2
+map_Kd ../tomato_cut.png

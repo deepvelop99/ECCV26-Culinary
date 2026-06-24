@@ -1,0 +1,12 @@
+# Blender 4.5.2 LTS MTL File: 'Orange_internal.blend'
+# www.blender.org
+
+newmtl Peach_color.001
+Ns 30.000000         # Specular exponent (soft highlight)
+Ka 1.000000 0.900000 0.850000  # Ambient color (밝은 복숭아빛)
+Kd 0.980000 0.650000 0.600000  # Diffuse color (주된 복숭아색)
+Ks 0.100000 0.050000 0.050000  # Specular color (약한 반사)
+Ke 0.000000 0.000000 0.000000  # Emission (없음)
+Ni 1.450000          # Optical density
+d 1.000000           # Opacity
+illum 2              # Illumination model (diffuse + specular)

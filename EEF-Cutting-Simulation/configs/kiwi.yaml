@@ -1,0 +1,116 @@
+board:
+  mesh_path: assets/board.obj
+  sdf_voxel: 160
+cutting:
+  cut_order: left-to-right
+  dwell_frames: 6
+  no_stiffness_drop: true
+  slices: 1
+  tip_band: 0.0018
+  tip_force_gain: 0.25
+  tip_post_above_board_only: true
+  tip_post_band_mul: 3.0
+  tip_post_gain: 0.05
+  tip_reso_exponent: 0.2
+  z_margin_ratio: 0.2
+cutting_mesh:
+  density: 1000.0
+  elasticity:
+    poisson_ratio: 0.33
+    youngs_modulus: 350000.0
+  grid_damping_ratio: 0.06
+  initial_transform:
+    scale:
+    - 0.008
+    - 0.008
+    - 0.008
+  mesh_path: assets/fruits/kiwi.obj
+  particle_damping: 0.05
+  particle_spacing: 0.0025
+  restitution: 0.005
+  sdf_voxel: 40
+damage:
+  damage_band: 0.0025
+  damage_v_hat: 0.35
+  damage_visualization: true
+knife:
+  blade:
+    axis: Y
+    fraction: 0.55
+  friction: 0.03
+  mesh_path: assets/knife.obj
+  min_speed_floor_ratio: 0.1
+  motion:
+    cutting_speed_mps: 0.3
+    knife_start_y: 0.125
+    knife_stop_y: -0.01
+    return_speed_mps: 1.0
+    z_offset: 0.0
+  sdf_voxel: 160
+  speed_resistance:
+    c_norm_scale: 0.35
+    k_quad_per_s: 0.0
+output:
+  enabled: true
+  export:
+    enabled: false
+    format: ply
+    out_dir: exports
+  fps: 60.0
+  logging:
+    axis_map: maniskill
+    eef_baseline: 0.0
+    eef_scale: 70.0
+    enabled: true
+    out_dir: logs
+plasticity:
+  enabled: true
+  hardening_kpa: 0.0
+  model: j2
+  viscoplastic_gamma: 0.0
+  yield_stress_kpa: 20.0
+stability:
+  J_clamp_max: 3.0
+  J_clamp_min: 0.1
+  J_warn_max: 4.0
+  J_warn_min: 0.1
+  max_speed_cap: 2.0
+  report_every: 100
+viewer:
+  camera_mode: manual
+  color_update_every: 6
+  initial_camera:
+    eye:
+    - 0.5
+    - 0.3
+    - 0.5
+    fov: 35.0
+    lookat:
+    - 0.0
+    - 0.1
+    - 0.0
+    up:
+    - 0.0
+    - 1.0
+    - 0.0
+  knife_render_stride: 4
+  lock_on_run: true
+  particle_radius: 0.0015
+  show_grid: false
+world:
+  bounds_max:
+  - 0.25
+  - 0.5
+  - 0.25
+  bounds_min:
+  - -0.25
+  - 0.0
+  - -0.25
+  dt: 2.0e-05
+  gravity:
+  - 0.0
+  - -9.81
+  - 0.0
+  grid_resolution: 120
+  reso_exponent: 1.0
+  substeps: 6

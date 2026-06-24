@@ -1,0 +1,140 @@
+# =============================================================================
+# MPM Cutting Simulation Configuration
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Simulation World Settings
+# -----------------------------------------------------------------------------
+world:
+  grid_resolution: 120              # delta x should be 4.2 X 10e-3 meters
+  bounds_min: [-0.25, 0.0, -0.25]   # [x_min, y_min, z_min]
+  bounds_max: [0.25, 0.5, 0.25]     # [x_max, y_max, z_max]
+  dt: 5.0e-6                        # Time step
+  substeps: 6                       # Sub-steps per frame
+  gravity: [0.0, -9.81, 0.0]        # Gravity vector [x, y, z] Current Ignore
+  reso_exponent: 1.0
+
+# -----------------------------------------------------------------------------
+# Material Properties - Cutting Mesh
+# -----------------------------------------------------------------------------
+cutting_mesh:
+  mesh_path: assets/melon.obj
+  sdf_voxel: 192
+  density: 1100.0             # kg/m³
+  particle_spacing: 0.002
+  elasticity:
+    youngs_modulus: 1.2e6     # Pa
+    poisson_ratio: 0.45
+  grid_damping_ratio: 0.06    # 0.06 - 0.15
+  particle_damping: 0.85
+  restitution: 0.005
+
+# -----------------------------------------------------------------------------
+# Cutting Tool - Knife
+# -----------------------------------------------------------------------------
+knife:
+  mesh_path: assets/knife.obj
+  sdf_voxel: 160
+  blade:
+    axis: Y                         # Blade axis direction
+    fraction: 0.55                  # Blade fraction
+  motion:
+    cut_mode: saw_cut               # options: cut, saw_cut
+    knife_start_y: 0.225  # 0.125   # Starting Y position
+    knife_stop_y: -0.01             # Stopping Y position
+    cutting_speed_mps: 8.0 # 1.5    # Cutting speed (m/s)
+    return_speed_mps: 8.0  # 1.5    # Return speed (m/s)
+    z_offset: 0.0                   # Z-axis offset
+    # Saw-cut parameters (only used when cut_mode: saw_cut)
+    saw:
+      amplitude_m: 0.005            # peak oscillation in meters
+      frequency_hz: 2.0             # cycles per second
+      axis: x                       # oscillate along x or z
+  friction: 0.03
+  min_speed_floor_ratio: 0.10       # Minimum speed floor: s_min = 0.10 * s0 (0.05~0.15 recommended)
+  speed_resistance:
+    c_norm_scale: 0.35              # Contact normalization scale: c_norm = 0.35 * dx/dt
+    k_quad_per_s: 4.0               # Quadratic coefficient k2 [1/s] (full contact t_half ≈ 1/k2)
+
+# -----------------------------------------------------------------------------
+# Cutting Board
+# -----------------------------------------------------------------------------
+board:
+  mesh_path: assets/board.obj
+  sdf_voxel: 160
+
+# -----------------------------------------------------------------------------
+# Viewer and Rendering Settings
+# -----------------------------------------------------------------------------
+viewer:
+  camera_mode: top                 # Camera mode: top, front, auto, manual
+  initial_camera:
+    eye: [0.45, 0.6, 0.45]         # Camera eye position [x, y, z]
+    lookat: [0.0, 0.1, 0.0]        # Camera look-at point [x, y, z]
+    up: [0.0, 0.0, -1.0]           # Camera up vector [x, y, z]
+    fov: 35.0                      # Field of view (degrees)
+  particle_radius: 0.0015          # Particle render radius
+  knife_render_stride: 4           # Knife render stride
+  lock_on_run: true                # Lock camera during simulation
+  color_update_every: 6            # Color update frequency
+  show_grid: false                 # Show grid visualization as red particles
+
+# -----------------------------------------------------------------------------
+# Cutting Algorithm Parameters
+# -----------------------------------------------------------------------------
+cutting:
+  slices: 6                        # Number of cutting slices
+  z_margin_ratio: 0.05             # Z-axis margin ratio (use full range for multicut)
+  cut_order: right-to-left         # Cutting order: center-out, left-to-right, right-to-left, left-right, right-left
+  dwell_frames: 6                  # Dwell frames between cuts
+  tip_force_gain: 0.25             # Tip force gain (scaled relative to dx)
+  tip_band: 0.0018                 # Tip band width
+  no_stiffness_drop: true          # Disable stiffness drop
+  tip_post_gain: 0.05              # Tip post-processing gain (scaled relative to dx)
+  tip_post_band_mul: 3.0           # Tip post-processing band multiplier
+  tip_reso_exponent: 0.2           # Tip resolution exponent
+  tip_post_above_board_only: true  # Apply tip post-processing above board only
+
+# -----------------------------------------------------------------------------
+# Damage Model
+# -----------------------------------------------------------------------------
+damage:
+  damage_v_hat: 0.35                # Damage velocity threshold
+  damage_band: 0.0025               # Damage band width
+  damage_visualization: true        # Enable damage visualization
+
+# -----------------------------------------------------------------------------
+# Plasticity Model
+# -----------------------------------------------------------------------------
+plasticity:
+  enabled: true                    # Enable plasticity
+  model: j2                        # Plasticity model type
+  yield_stress_kpa: 5.0            # Yield stress (kPa)
+  hardening_kpa: 0.0               # Hardening modulus (kPa)
+  viscoplastic_gamma: 0.0          # Viscoplastic parameter
+
+# -----------------------------------------------------------------------------
+# Stability and Safety Checks
+# -----------------------------------------------------------------------------
+stability:
+  report_every: 100                # Stability report frequency (0 = disabled)
+  J_warn_min: 0.1                  # Jacobian warning minimum (more conservative)
+  J_warn_max: 4.0                  # Jacobian warning maximum (more conservative)
+  max_speed_cap: 2.0               # Maximum speed cap (reduced for stability)
+  J_clamp_min: 0.1                 # Jacobian clamp minimum (more conservative)
+  J_clamp_max: 3.0                 # Jacobian clamp maximum (more conservative)
+
+# -----------------------------------------------------------------------------
+# Output and Logging
+# -----------------------------------------------------------------------------
+output:
+  enabled: true                 # Enable output
+  fps: 60.0                     # Output frame rate (for testing)
+  export:
+    enabled: true               # Enable export
+    out_dir: exports_melon_saw_cut      # Export directory
+    format: ply                 # Export format: npz, ply
+  logging:
+    enabled: true               # Enable logging
+    out_dir: logs               # Log directory
+    axis_map: maniskill         # maniskill(=y↔z swap) | world(no swap)

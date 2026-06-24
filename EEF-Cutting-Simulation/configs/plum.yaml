@@ -1,0 +1,107 @@
+world:
+  grid_resolution: 120
+  bounds_min:
+  - -0.25
+  - 0.0
+  - -0.25
+  bounds_max:
+  - 0.25
+  - 0.5
+  - 0.25
+  dt: 2.0e-05
+  substeps: 6
+  gravity:
+  - 0.0
+  - -9.81
+  - 0.0
+  reso_exponent: 1.0
+cutting_mesh:
+  mesh_path: assets/fruits/plum.obj
+  sdf_voxel: 40
+  initial_transform:
+    scale:
+    - 2
+    - 2
+    - 2
+  density: 1000.0
+  particle_spacing: 0.0025
+  elasticity:
+    youngs_modulus: 1000000.0
+    poisson_ratio: 0.33
+  grid_damping_ratio: 0.06
+  particle_damping: 0.05
+  restitution: 0.005
+knife:
+  mesh_path: assets/knife.obj
+  sdf_voxel: 160
+  blade:
+    axis: Y
+    fraction: 0.55
+  motion:
+    knife_start_y: 0.125
+    knife_stop_y: -0.01
+    cutting_speed_mps: 0.3
+    return_speed_mps: 1.0
+    z_offset: 0.0
+  friction: 0.03
+  min_speed_floor_ratio: 0.1
+  speed_resistance:
+    c_norm_scale: 0.35
+    k_quad_per_s: 0.0
+board:
+  mesh_path: assets/board.obj
+  sdf_voxel: 160
+viewer:
+  camera_mode: manual
+  initial_camera:
+    eye:
+    - 0.5
+    - 0.3
+    - 0.5
+    lookat:
+    - 0.0
+    - 0.1
+    - 0.0
+    up:
+    - 0.0
+    - 1.0
+    - 0.0
+  show_grid: false
+  particle_size: 0.003
+  follow_knife: false
+  jpeg_quality: 92
+  pre_run_band_mul: 4.5
+  reso_exponent: 0.85
+  tip_post_band_mul: 3.0
+  tip_reso_exponent: 0.2
+  tip_post_above_board_only: true
+damage:
+  damage_v_hat: 0.35
+  damage_band: 0.0025
+  damage_visualization: true
+plasticity:
+  enabled: true
+  model: j2
+  yield_stress_kpa: 60.0
+  hardening_kpa: 0.0
+  viscoplastic_gamma: 0.0
+stability:
+  report_every: 100
+  J_warn_min: 0.1
+  J_warn_max: 4.0
+  max_speed_cap: 2.0
+  J_clamp_min: 0.1
+  J_clamp_max: 3.0
+output:
+  enabled: true
+  fps: 60.0
+  export:
+    enabled: false
+    out_dir: exports
+    format: ply
+  logging:
+    enabled: true
+    out_dir: logs
+    axis_map: maniskill
+    eef_baseline: 0.0
+    eef_scale: 70.0

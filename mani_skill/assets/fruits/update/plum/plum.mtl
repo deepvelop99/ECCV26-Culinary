@@ -1,0 +1,23 @@
+# generated
+
+newmtl plum_skin
+Ns 50
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.3 0.3 0.3
+Ke 0 0 0
+Ni 1.5
+d 1
+illum 2
+map_Kd plum_diffuse.jpg
+
+newmtl plum_cut
+Ns 30
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.15 0.15 0.15
+Ke 0 0 0
+Ni 1.5
+d 1
+illum 2
+map_Kd plum_cut.jpg

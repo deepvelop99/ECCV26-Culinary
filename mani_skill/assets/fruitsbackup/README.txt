@@ -1,0 +1,1 @@
+Place your meshes here: board.obj, banana.obj and knife.obj (units meters, Y-up if possible).
