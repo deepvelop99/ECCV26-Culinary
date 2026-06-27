@@ -1,6 +1,6 @@
 # CulinaryCut: A Physics-Aware VLA Benchmark for Food Cutting
 
-**ECCV 2026** &nbsp;|&nbsp; [Project Page](https://deepvelop99.github.io/culinary.github.io/) &nbsp;|&nbsp; [arXiv](https://arxiv.org/abs/2601.06451) &nbsp;|&nbsp; [Paper](https://drive.google.com/file/d/10vp2SWByAJGr-Ccrw68c2hTepsMr5di9/view?usp=sharing) &nbsp;|&nbsp; [Dataset](https://drive.google.com/drive/folders/1SwtYeItEToyYlJ2Sn1m8qqSIndDWxIHN?usp=sharing)
+**ECCV 2026** &nbsp;|&nbsp; [Project Page](https://deepvelop99.github.io/culinary.github.io/) &nbsp;|&nbsp; [arXiv](https://arxiv.org/abs/2601.06451) &nbsp;|&nbsp; [Paper](https://drive.google.com/file/d/1MD6uJXdBlgY86GfR1rZ3JY5KIk2vcO0l/view?usp=sharing) &nbsp;|&nbsp; [Dataset](https://drive.google.com/drive/folders/1SwtYeItEToyYlJ2Sn1m8qqSIndDWxIHN?usp=sharing)
 
 Dataset generation pipeline for **CulinaryCut** — coupling Taichi MLS-MPM physics simulation with ManiSkill v3 to produce physically-grounded robot food-cutting trajectories.
 
